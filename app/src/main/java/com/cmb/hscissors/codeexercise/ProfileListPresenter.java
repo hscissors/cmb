@@ -1,5 +1,7 @@
 package com.cmb.hscissors.codeexercise;
 
+import rx.android.schedulers.AndroidSchedulers;
+
 /**
  * Created by hscissors on 1/7/18.
  * <p>
@@ -9,7 +11,7 @@ package com.cmb.hscissors.codeexercise;
  */
 
 public class ProfileListPresenter<T extends ProfileListView> {
-
+    
     private T view;
 
     public void attachView(T view) {
@@ -21,7 +23,10 @@ public class ProfileListPresenter<T extends ProfileListView> {
             view.showLoading();
         }
 
-
+        DataService.getTeamMembers()
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(throwable -> onError(throwable.getMessage()))
+                .subscribe(teamMembers -> onSuccess())
     }
 
     private void onSuccess() {
@@ -29,6 +34,10 @@ public class ProfileListPresenter<T extends ProfileListView> {
     }
 
     private void onError(String error) {
+        if(error == null){
+            error = "";
+        }
+
         view.showError(error);
     }
 

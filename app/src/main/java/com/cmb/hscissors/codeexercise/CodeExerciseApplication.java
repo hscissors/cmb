@@ -11,14 +11,14 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
  */
 
 public class CodeExerciseApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        final Picasso picasso = new Picasso.Builder(getApplicationContext())
-                .build();
-
-        Picasso.setSingletonInstance(picasso);
+        Picasso.setSingletonInstance(
+                new Picasso.Builder(getApplicationContext())
+                        .build());
 
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
@@ -26,5 +26,6 @@ public class CodeExerciseApplication extends Application {
                         .setFontAttrId(R.attr.fontPath)
                         .build()
         );
+
     }
 }
