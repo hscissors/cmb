@@ -1,4 +1,4 @@
-package com.cmb.hscissors.codeexercise;
+package com.cmb.hscissors.codeexercise.data;
 
 import java.util.ArrayList;
 

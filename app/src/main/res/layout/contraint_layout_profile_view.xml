@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:id="@+id/profile_view_profile_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp">
+
+            <TextView
+                android:id="@+id/profile_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FirstName, LastName"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profile_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Director of Titles"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profile_view_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leroum ipsum of bio data informatio of more ipsum dul reo." />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/profile_view_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

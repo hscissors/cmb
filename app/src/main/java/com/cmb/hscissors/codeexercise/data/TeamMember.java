@@ -1,4 +1,4 @@
-package com.cmb.hscissors.codeexercise;
+package com.cmb.hscissors.codeexercise.data;
 
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -15,28 +15,32 @@ public class TeamMember {
     private String firstName;
     private String lastName;
 
-    public Long getId(){
-        return !TextUtils.isEmpty(id) ? Long.parseLong(id) : -1;
+    public Long getId() {
+        return !TextUtils.isEmpty(id) ? Long.parseLong(id) : -1L;
     }
 
     @Nullable
-    public String getAvatarUrl(){
+    public String getAvatarUrl() {
         return avatar;
     }
 
-    public String getBio(){
+    public String getBio() {
         return bio;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
+    }
+
+    public String getFullName() {
+        return !TextUtils.isEmpty(lastName) ? firstName : firstName + " " + lastName;
     }
 }
