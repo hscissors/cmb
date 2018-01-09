@@ -1,4 +1,4 @@
-#Notes of Coding Exercise
+# Notes of Coding Exercise
 - I put a few comments in the code to indicate places where I knew a production app would be need make changes. This includes in the `DataService.class` and in parts of the conconcrete MVP parts. Accordingly, I did not make abstract classes for the MVP pattern.
 - I did not use `string.xml` or `dimen.xml` or any of the DPI/SDK dependent res files, because this was just a test.
 - There is very minor error handling and null checks--a production app would need to be hardened.
