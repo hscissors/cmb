@@ -47,7 +47,6 @@ public class ProfileListPresenter {
 
     private void onSuccess() {
         addNextProfile();
-        addNextProfile();
 
         view.showContent();
     }
@@ -64,7 +63,6 @@ public class ProfileListPresenter {
         if (view == null) return;
 
         view.showApprove();
-        view.swapCurrentProfile();
         addNextProfile();
     }
 
@@ -72,7 +70,6 @@ public class ProfileListPresenter {
         if (view == null) return;
 
         view.showReject();
-        view.swapCurrentProfile();
         addNextProfile();
     }
 
