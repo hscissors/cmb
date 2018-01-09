@@ -2,6 +2,7 @@ package com.cmb.hscissors.codeexercise;
 
 import android.app.Application;
 
+import com.cmb.hscissors.codeexercise.data.DataService;
 import com.squareup.picasso.Picasso;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -27,5 +28,6 @@ public class CodeExerciseApplication extends Application {
                         .build()
         );
 
+        DataService.getInstance().init();
     }
 }

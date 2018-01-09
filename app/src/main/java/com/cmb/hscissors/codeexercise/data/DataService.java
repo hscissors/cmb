@@ -16,18 +16,27 @@ import rx.schedulers.Schedulers;
 public class DataService {
     private static String BASE_URL = "https://raw.githubusercontent.com/hscissors/cmb/master/app/src/main/assets/";
 
-    private static Retrofit retrofit;
+    private Retrofit retrofit;
 
-    public static void init(){
+    private static class SingletonHelper {
+        private static final DataService INSTANCE = new DataService();
+    }
+
+    public static DataService getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
+
+    public void init() {
         retrofit = new Retrofit.Builder()
-                        .baseUrl("https://api.github.com")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                        .build();
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
     }
 
     //A more robust app might abstract away from concretes to general CRUD calls
-    public static Observable<ArrayList<TeamMember>> getTeamMembers(){
+    public Observable<ArrayList<TeamMember>> getTeamMembers() {
         return retrofit.create(Api.class)
                 .getTeamMembers()
                 .subscribeOn(Schedulers.io());

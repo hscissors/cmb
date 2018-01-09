@@ -41,6 +41,6 @@ public class TeamMember {
     }
 
     public String getFullName() {
-        return !TextUtils.isEmpty(lastName) ? firstName : firstName + " " + lastName;
+        return TextUtils.isEmpty(lastName) ? firstName : firstName + " " + lastName;
     }
 }

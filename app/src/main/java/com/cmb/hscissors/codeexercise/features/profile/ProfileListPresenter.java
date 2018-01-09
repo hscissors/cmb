@@ -16,7 +16,7 @@ import rx.android.schedulers.AndroidSchedulers;
  */
 
 public class ProfileListPresenter {
-    
+
     private ProfileListView view;
     private ArrayList<TeamMember> teamMembers;
     private int currentProfileIndex = 0;
@@ -25,17 +25,18 @@ public class ProfileListPresenter {
         this.view = view;
     }
 
-    public void detachView(){
+    public void detachView() {
         this.view = null;
     }
 
     public void init() {
-        if(view != null){
+        if (view != null) {
             view.showLoading();
         }
 
         //This would not be a viable pattern with pagination, but for demo purposes works
-        DataService.getTeamMembers()
+        DataService.getInstance()
+                .getTeamMembers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable -> onError(throwable.getMessage()))
                 .subscribe(teamMembers -> {
@@ -47,10 +48,12 @@ public class ProfileListPresenter {
     private void onSuccess() {
         addNextProfile();
         addNextProfile();
+
+        view.showContent();
     }
 
     private void onError(String error) {
-        if(error == null){
+        if (error == null) {
             error = "";
         }
 
@@ -58,21 +61,26 @@ public class ProfileListPresenter {
     }
 
     public void onProfilePositive(TeamMember teamMember) {
+        if (view == null) return;
+
+        view.showApprove();
+        view.swapCurrentProfile();
         addNextProfile();
     }
 
     public void onProfileNegative(TeamMember teamMember) {
+        if (view == null) return;
+
+        view.showReject();
+        view.swapCurrentProfile();
         addNextProfile();
     }
 
-    private void addNextProfile(){
-        if(view == null) return;
+    private void addNextProfile() {
+        if (view == null) return;
 
         view.addProfile(teamMembers.get(currentProfileIndex));
-        currentProfileIndex = currentProfileIndex > teamMembers.size() -1 ? 0 : currentProfileIndex++;
-    }
 
-    public void onSwapProfile(){
-
+        currentProfileIndex = currentProfileIndex >= teamMembers.size() - 1 ? 0 : currentProfileIndex + 1;
     }
 }

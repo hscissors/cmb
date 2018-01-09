@@ -30,6 +30,6 @@ public class CircleAnswerView extends ConstraintLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr){
-        inflate(getContext(), R.layout.circle_answer_contraint_layout, this);
+        inflate(getContext(), R.layout.include_linear_layout_selector, this);
     }
 }

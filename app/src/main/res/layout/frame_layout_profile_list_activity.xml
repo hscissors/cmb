@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/profile_list_activity_loading"
-        layout="@layout/include_constraint_layout_loading" />
-
     <FrameLayout
         android:id="@+id/profile_list_activity_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <include layout="@layout/include_relative_layout_approved" />
+
+    <include layout="@layout/include_relative_layout_rejected" />
+
+    <include layout="@layout/include_relative_layout_loading" />
 </FrameLayout>

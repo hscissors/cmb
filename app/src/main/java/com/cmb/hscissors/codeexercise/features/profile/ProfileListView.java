@@ -9,7 +9,9 @@ import com.cmb.hscissors.codeexercise.data.TeamMember;
 interface ProfileListView {
     void addProfile(TeamMember teamMember);
 
-    void swapCurrentProfile();
+    void showApprove();
+
+    void showReject();
 
     void showContent();
 
